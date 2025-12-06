@@ -1,9 +1,45 @@
 package org.cynthia;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Address {
     private int streetNo;
     private String street;
     private String city;
     private Province province;
-    private String zipCode;
+    private String postalCode;
+
+    /**
+     * Checks whether the given postal code is valid.
+     * @param postalCode the postal code to check
+     * @return true if valid, false otherwise
+     */
+    public static boolean isPostalCodeValid(String postalCode) {
+        if (postalCode == null || postalCode.length() != 6) {
+            return false;
+        }
+
+        postalCode = postalCode.toUpperCase();
+
+        for (int i = 0; i < postalCode.length(); i++) {
+            char c = postalCode.charAt(i);
+            if (i % 2 == 0) {
+                if (!Character.isLetter(c)) return false;
+            } else {
+                if (!Character.isDigit(c)) return false;
+            }
+        }
+        return true;
+    }
+
+    public enum Province {
+        AB, BC, MB, NB, NL, NS, PE, QC, ON
+    }
 }
