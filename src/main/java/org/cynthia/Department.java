@@ -14,6 +14,16 @@ public class Department {
         return String.format("D%02d", nextId++);
     }
 
+    public Department(String departmentName) {
+        if (isDepartmentNameValid(departmentName)) {
+            this.departmentId = generateId();
+            this.departmentName = departmentName;
+        } else {
+            this.departmentId = null;
+            this.departmentName = null;
+        }
+    }
+
     /**
      * Checks whether a department name is valid.
      * @param departmentName the department name to check
@@ -31,5 +41,4 @@ public class Department {
         }
         return true;
     }
-
 }
