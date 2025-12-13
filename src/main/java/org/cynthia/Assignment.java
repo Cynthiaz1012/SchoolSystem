@@ -1,6 +1,7 @@
 package org.cynthia;
 
 import java.util.List;
+import java.util.Random;
 
 public class Assignment {
     private String assignmentId;
@@ -25,5 +26,24 @@ public class Assignment {
             }
         }
         return count == 0 ? 0.0 : total / count;
+    }
+
+    /**
+     *  Generates random scores for each student in this assignment.
+     */
+    public void generateRandomScore() {
+        Random rand = new Random();
+        for (int i = 0; i < scores.size(); i++) {
+            int range = rand.nextInt(11);
+            int score;
+
+            if (range == 0) score = rand.nextInt(60);
+            else if (range <= 2) score = 60 + rand.nextInt(10);
+            else if (range <= 4) score = 70 + rand.nextInt(10);
+            else if (range <= 8) score = 80 + rand.nextInt(10);
+            else score = 90 + rand.nextInt(11);
+
+            scores.set(i, score);
+        }
     }
 }
