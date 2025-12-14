@@ -130,5 +130,38 @@ public class Course {
                 department.getDepartmentName() + ")";
     }
 
+    /**
+     * Converts this Course object into a formatted string representation.
+     * @return a formatted string containing the course's details, assignments, registered students, and weight validity information.
+     */
+    public String toString() {
+        String result = "Course ID: " + courseId
+                + "\nCourse Name: " + courseName
+                + "\nCredits: " + credits
+                + "\nDepartment: " + department.getDepartmentName()
+                + "\nAssignments:";
 
+        if (assignments.isEmpty()) {
+            result += " None";
+        } else {
+            for (Assignment assignment : assignments) {
+                result += "\n  " + assignment.getAssignmentId()
+                        + " - " + assignment.getAssignmentName()
+                        + " (" + assignment.getWeight() + "%)";
+            }
+        }
+
+        result += "\nRegistered Students:";
+        if (registeredStudents.isEmpty()) {
+            result += " None";
+        } else {
+            for (Student student : registeredStudents) {
+                result += "\n  " + student.getStudentId()
+                        + " - " + student.getStudentName()
+                        + " (" + (student.getDepartment() != null ? student.getDepartment().getDepartmentName() : "No Department") + ")";
+            }
+        }
+        result += "\nAssignment Weights Valid: " + (isAssignmentWeightValid() ? "Yes" : "No");
+        return result;
+    }
 }
