@@ -75,4 +75,34 @@ public class Course {
         }
         calcStudentsAverage();
     }
+
+    /**
+     * Displays the course scores in a formatted table.
+     */
+    public void displayScores() {
+        System.out.println("Course: " + courseName + " (" + courseId + ")");
+        System.out.print("              ");
+        for (Assignment assignment : assignments) {
+            System.out.printf("%-15s", assignment.getAssignmentName());
+        }
+        System.out.println("Final Score");
+
+        int[] avgs = calcStudentsAverage();
+
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            Student s = registeredStudents.get(i);
+            System.out.printf("%-15s", s.getStudentName());
+            for (Assignment a : assignments) {
+                Integer score = a.getScores().get(i);
+                System.out.printf("%-15s", score == null ? "-" : score.toString());
+            }
+            System.out.printf("%d%n", avgs[i]);
+        }
+
+        System.out.print("Average        ");
+        for (Assignment assignment : assignments) {
+            System.out.printf("%-15.1f", assignment.calcAssignmentAvg());
+        }
+        System.out.println();
+    }
 }
