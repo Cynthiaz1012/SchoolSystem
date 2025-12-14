@@ -105,4 +105,19 @@ public class Course {
         }
         System.out.println();
     }
+
+    /**
+     *  Adds a new assignment to the course.
+     * @param assignmentName the assignment name
+     * @param weight the weight of the assignment
+     * @return always true
+     */
+    public boolean addAssignment(String assignmentName, double weight) {
+        Assignment newAssignment = new Assignment(assignmentName, weight);
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            newAssignment.getScores().add(null);
+        }
+        assignments.add(newAssignment);
+        return true;
+    }
 }
