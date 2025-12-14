@@ -120,4 +120,15 @@ public class Course {
         assignments.add(newAssignment);
         return true;
     }
+
+    /**
+     * Returns a simplified string representation of the course.
+     * @return simple formatted string
+     */
+    public String toSimplifiedString() {
+        return courseId + " - " + courseName + " (" + credits + " credits, " +
+                department.getDepartmentName() + ")";
+    }
+
+
 }
