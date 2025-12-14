@@ -76,6 +76,15 @@ public class Student {
         return true;
     }
 
+    /**
+     * Converts this Student object into a simplified string representation.
+     * @return a string containing the studentId, studentName, and departmentName.
+     */
+    public String toSimplifiedString() {
+        return studentId + " - " + studentName
+                + " (" + (department != null ? department.getDepartmentName() : "No Department") + ")";
+    }
+
     public enum Gender {
         MALE, FEMALE
     }
