@@ -1,14 +1,25 @@
 package org.cynthia;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 import java.util.Random;
 
+@Setter
+@Getter
 public class Assignment {
     private String assignmentId;
     private String assignmentName;
     private double weight;
     private List<Integer> scores;
     private static int nextId = 1;
+
+    public Assignment(String assignmentName, double weight) {
+        this.assignmentId = String.format("A%03d", nextId++);;
+        this.assignmentName = assignmentName;
+        this.weight = weight;
+    }
 
     /**
      * Calculates and returns the average score of this assignment.
@@ -45,11 +56,5 @@ public class Assignment {
 
             scores.set(i, score);
         }
-    }
-
-    public Assignment(String assignmentId, String assignmentName, double weight) {
-        this.assignmentId = assignmentId;
-        this.assignmentName = assignmentName;
-        this.weight = weight;
     }
 }
