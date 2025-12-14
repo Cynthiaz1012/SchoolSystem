@@ -65,4 +65,14 @@ public class Course {
         }
         return averages;
     }
+
+    /**
+     * Generates random scores for all assignments and students.
+     */
+    public void generateScores() {
+        for (Assignment assignment : assignments) {
+            assignment.generateRandomScore();
+        }
+        calcStudentsAverage();
+    }
 }
