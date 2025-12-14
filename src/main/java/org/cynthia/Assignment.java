@@ -46,4 +46,10 @@ public class Assignment {
             scores.set(i, score);
         }
     }
+
+    public Assignment(String assignmentId, String assignmentName, double weight) {
+        this.assignmentId = assignmentId;
+        this.assignmentName = assignmentName;
+        this.weight = weight;
+    }
 }
