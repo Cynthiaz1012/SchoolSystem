@@ -18,6 +18,10 @@ public class Course {
     private List<Student> registeredStudents;
     private static int nextId = 1;
 
+    /**
+     * Checks if the total weight of all assignments equals 100%.
+     * @return true if total weight == 100; otherwise false.
+     */
     public boolean isAssignmentWeightValid() {
         double sum = 0;
         for (Assignment assignment : assignments) {
@@ -26,6 +30,11 @@ public class Course {
         return Math.abs(sum - 100.0) < 0.001;
     }
 
+    /**
+     * Registers a student for this course.
+     * @param student the student to register
+     * @return true if successful， false if already registered.
+     */
     public boolean registerStudent(Student student) {
         if (registeredStudents.contains(student)) return false;
 
@@ -37,6 +46,10 @@ public class Course {
         return true;
     }
 
+    /**
+     * Calculates each student's weighted average across all assignments.
+     * @return an array of average scores for all students
+     */
     public int[] calcStudentsAverage() {
         int[] averages = new int[registeredStudents.size()];
 
