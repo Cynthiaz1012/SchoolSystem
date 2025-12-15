@@ -80,7 +80,7 @@ public class MainTest {
     }
 
     @Test
-    @DisplayName("normal -> true")
+    @DisplayName("normal register -> true")
     void testRegisterCourse1() {
         Student student = new Student("Jane Doe", Student.Gender.FEMALE,
                 new Address(11, "Terry", "Montreal", Address.Province.QC, "H3E1L4"),
@@ -113,6 +113,43 @@ public class MainTest {
         Course course = null;
         boolean expected = false;
         boolean actual = student.registerCourse(course);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("normal drop -> true")
+    void testDropCourse1() {
+        Student student = new Student("Jane Doe", Student.Gender.FEMALE,
+                new Address(11, "Terry", "Montreal", Address.Province.QC, "H3E1L4"),
+                new Department("Computer Science"));
+        Course course = new Course("Programming", 3.0, new Department("Computer Science"));
+        student.registerCourse(course);
+        boolean expected = true;
+        boolean actual = student.dropCourse(course);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("drop no register course -> false")
+    void testDropCourse2() {
+        Student student = new Student("Jane Doe", Student.Gender.FEMALE,
+                new Address(11, "Terry", "Montreal", Address.Province.QC, "H3E1L4"),
+                new Department("Computer Science"));
+        Course course = new Course("Programming", 3.0, new Department("Computer Science"));
+        boolean expected = false;
+        boolean actual = student.dropCourse(course);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("null -> false")
+    void testDropCourse3() {
+        Student student = new Student("Jane Doe", Student.Gender.FEMALE,
+                new Address(11, "Terry", "Montreal", Address.Province.QC, "H3E1L4"),
+                new Department("Computer Science"));
+        Course course = null;
+        boolean expected = false;
+        boolean actual = student.dropCourse(course);
         Assertions.assertEquals(expected, actual);
     }
 }
