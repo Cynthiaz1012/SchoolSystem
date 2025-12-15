@@ -261,4 +261,37 @@ public class MainTest {
         boolean actual = course.registerStudent(student);
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("80 -> 80")
+    void testCalcStudentsAverage1() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        Student student = new Student("Alice", Student.Gender.FEMALE, null, department);
+        course.registerStudent(student);
+        course.addAssignment("Final Exam", 100);
+        course.getAssignments().get(0).setScores(Arrays.asList(80));
+
+        int[] expected = {80};
+        int[] actual = course.calcStudentsAverage();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("40 + 60 -> 82")
+    void testCalcStudentsAverage2() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        Student student = new Student("Alice", Student.Gender.FEMALE, null, department);
+        course.registerStudent(student);
+        course.addAssignment("Lab1", 40);
+        course.addAssignment("Lab2", 60);
+        course.getAssignments().get(0).setScores(Arrays.asList(70));
+        course.getAssignments().get(1).setScores(Arrays.asList(90));
+
+        int[] expected = {82};
+        int[] actual = course.calcStudentsAverage();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
 }
