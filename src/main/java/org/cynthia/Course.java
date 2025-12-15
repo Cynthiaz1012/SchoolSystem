@@ -46,7 +46,12 @@ public class Course {
      * @return true if successful， false if already registered.
      */
     public boolean registerStudent(Student student) {
-        if (registeredStudents.contains(student)) return false;
+        if (student == null) {
+            return false;
+        }
+        if (registeredStudents.contains(student)) {
+            return false;
+        }
 
         registeredStudents.add(student);
 
