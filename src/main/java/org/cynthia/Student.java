@@ -85,6 +85,30 @@ public class Student {
                 + " (" + (department != null ? department.getDepartmentName() : "No Department") + ")";
     }
 
+    /**
+     * Converts this Student object into a detailed string representation.
+     * @return  a formatted string containing full student details
+     */
+    public String toString() {
+        String result = "Student ID: " + studentId
+                + "\nName: " + studentName
+                + "\nGender: " + gender
+                + "\nAddress: " + address
+                + "\nDepartment: " + department;
+
+        if (registeredCourses.isEmpty()) {
+            result += "\nRegistered Courses: None";
+        } else {
+            result += "\nRegistered Courses:";
+            for (Course course : registeredCourses) {
+                result += "\n  - " + course.getCourseId()
+                        + " (" + course.getCourseName() + ") in "
+                        + course.getDepartment().getDepartmentName();
+            }
+        }
+        return result;
+    }
+
     public enum Gender {
         MALE, FEMALE
     }
