@@ -191,4 +191,40 @@ public class MainTest {
         double actual = assignment.calcAssignmentAvg();
         Assertions.assertEquals(expected, actual, 0.001);
     }
+
+    @Test
+    @DisplayName("40 + 60 -> true")
+    void testIsAssignmentWeightValid1() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        course.addAssignment("Lab 1", 40);
+        course.addAssignment("Lab 2", 60);
+        boolean expected = true;
+        boolean actual = course.isAssignmentWeightValid();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("40 + 30 -> false")
+    void testIsAssignmentWeightValid2() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        course.addAssignment("Lab 1", 40);
+        course.addAssignment("Lab 2", 30);
+        boolean expected = false;
+        boolean actual = course.isAssignmentWeightValid();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("50 + 60 -> false")
+    void testIsAssignmentWeightValid3() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        course.addAssignment("Lab 1", 50);
+        course.addAssignment("Lab 2", 60);
+        boolean expected = false;
+        boolean actual = course.isAssignmentWeightValid();
+        Assertions.assertEquals(expected, actual);
+    }
 }
