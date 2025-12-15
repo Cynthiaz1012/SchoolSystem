@@ -1,4 +1,5 @@
 import org.cynthia.Address;
+import org.cynthia.Department;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,6 +38,42 @@ public class MainTest {
         String postalCode = "3L4L1";
         boolean expected = false;
         boolean actual = Address.isPostalCodeValid(postalCode);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Computer Science And Math -> true")
+    void testisDepartmentNameValid1() {
+        String departmentName = "Computer Science And Math";
+        boolean expected = true;
+        boolean actual = Department.isDepartmentNameValid(departmentName);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("null -> false")
+    void testisDepartmentNameValid2() {
+        String departmentName = null;
+        boolean expected = false;
+        boolean actual = Department.isDepartmentNameValid(departmentName);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("empty -> false")
+    void testisDepartmentNameValid3() {
+        String departmentName = "";
+        boolean expected = false;
+        boolean actual = Department.isDepartmentNameValid(departmentName);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("12345 -> false")
+    void testisDepartmentNameValid4() {
+        String departmentName = "12345";
+        boolean expected = false;
+        boolean actual = Department.isDepartmentNameValid(departmentName);
         Assertions.assertEquals(expected, actual);
     }
 }
