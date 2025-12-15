@@ -1,8 +1,17 @@
 # School System 
 
-## Author: Cynthia Zhang 2557705
+## Author
+**Cynthia Zhang**
+Student ID: **2557705**
 
-This is a project for the final project of Introduction of Programming
+## Project Description
 
-This project mimic a school system that allows the students to register and drop a course 
-and allow the teacher to display scores of a course
+This project is the **final project for Introduction to Programming**.  
+It simulates a **school management system**.
+
+The system allows:
+- Students to register and drop courses
+- Courses to manage students, assignments, and scores
+- Teachers to generate, calculate, and display student scores
+
+
