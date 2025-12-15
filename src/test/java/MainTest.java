@@ -1,10 +1,9 @@
-import org.cynthia.Address;
-import org.cynthia.Course;
-import org.cynthia.Department;
-import org.cynthia.Student;
+import org.cynthia.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 public class MainTest {
     @Test
@@ -151,5 +150,45 @@ public class MainTest {
         boolean expected = false;
         boolean actual = student.dropCourse(course);
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("80, 90, 70 -> 80.0")
+    void testCalcAssignmentAvg1() {
+        Assignment assignment = new Assignment("Lab 1", 40);
+        assignment.setScores(Arrays.asList(80, 90, 70));
+        double expected = 80.0;
+        double actual = assignment.calcAssignmentAvg();
+        Assertions.assertEquals(expected, actual, 0.001);
+    }
+
+    @Test
+    @DisplayName("null -> 0.0")
+    void testCalcAssignmentAvg2() {
+        Assignment assignment = new Assignment("Lab 1", 40);
+        assignment.setScores(Arrays.asList(null, null, null));
+        double expected = 0.0;
+        double actual = assignment.calcAssignmentAvg();
+        Assertions.assertEquals(expected, actual, 0.001);
+    }
+
+    @Test
+    @DisplayName("80, null, 100 -> 90.0")
+    void testCalcAssignmentAvg3() {
+        Assignment assignment = new Assignment("Lab 1", 40);
+        assignment.setScores(Arrays.asList(80, null, 100));
+        double expected = 90.0;
+        double actual = assignment.calcAssignmentAvg();
+        Assertions.assertEquals(expected, actual, 0.001);
+    }
+
+    @Test
+    @DisplayName("{} -> 0.0")
+    void testCalcAssignmentAvg4() {
+        Assignment assignment = new Assignment("Lab 1", 40);
+        assignment.setScores(Arrays.asList());
+        double expected = 0.0;
+        double actual = assignment.calcAssignmentAvg();
+        Assertions.assertEquals(expected, actual, 0.001);
     }
 }
