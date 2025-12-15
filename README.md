@@ -2,6 +2,7 @@
 
 ## Author
 **Cynthia Zhang**
+
 Student ID: **2557705**
 
 ## Project Description
@@ -13,5 +14,13 @@ The system allows:
 - Students to register and drop courses
 - Courses to manage students, assignments, and scores
 - Teachers to generate, calculate, and display student scores
+
+## Main Classes:
+- Address
+- Department
+- Student
+- Course
+- Assignment
+- Util
 
 
