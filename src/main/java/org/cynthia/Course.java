@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode
@@ -17,6 +18,15 @@ public class Course {
     private List<Assignment> assignments;
     private List<Student> registeredStudents;
     private static int nextId = 1;
+
+    public Course(String courseName, double credits, Department department) {
+        this.courseId = String.format("C-%s-%02d", department.getDepartmentId(), nextId++);
+        this.courseName = Util.toTitleCase(courseName);
+        this.credits = credits;
+        this.department = department;
+        this.assignments = new ArrayList<>();
+        this.registeredStudents = new ArrayList<>();
+    }
 
     /**
      * Checks if the total weight of all assignments equals 100%.
@@ -90,10 +100,10 @@ public class Course {
         int[] avgs = calcStudentsAverage();
 
         for (int i = 0; i < registeredStudents.size(); i++) {
-            Student s = registeredStudents.get(i);
-            System.out.printf("%-15s", s.getStudentName());
-            for (Assignment a : assignments) {
-                Integer score = a.getScores().get(i);
+            Student student = registeredStudents.get(i);
+            System.out.printf("%-15s", student.getStudentName());
+            for (Assignment assignment : assignments) {
+                Integer score = assignment.getScores().get(i);
                 System.out.printf("%-15s", score == null ? "-" : score.toString());
             }
             System.out.printf("%d%n", avgs[i]);
