@@ -294,4 +294,46 @@ public class MainTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("no student -> true")
+    void testAddAssignment1() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        boolean expected = true;
+        boolean actual = course.addAssignment("Lab 1", 40);
+        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(1, course.getAssignments().size());
+        Assertions.assertEquals(0, course.getAssignments().get(0).getScores().size());
+    }
+
+    @Test
+    @DisplayName("one student -> true")
+    void testAddAssignment2() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        Student student = new Student("Alice", Student.Gender.FEMALE, null, department);
+        course.registerStudent(student);
+        boolean expected = true;
+        boolean actual = course.addAssignment("Lab 1", 40);
+        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(1, course.getAssignments().size());
+        Assertions.assertEquals(1, course.getAssignments().get(0).getScores().size());
+    }
+
+    @Test
+    @DisplayName("two student -> true")
+    void testAddAssignment3() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        Student student1 = new Student("Alice", Student.Gender.FEMALE, null, department);
+        Student student2 = new Student("Bob", Student.Gender.MALE, null, department);
+        course.registerStudent(student1);
+        course.registerStudent(student2);
+
+        boolean expected = true;
+        boolean actual = course.addAssignment("Lab 1", 40);
+        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(1, course.getAssignments().size());
+        Assertions.assertEquals(2, course.getAssignments().get(0).getScores().size());
+    }
 }
