@@ -227,4 +227,38 @@ public class MainTest {
         boolean actual = course.isAssignmentWeightValid();
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("first time register -> true")
+    void testRegisterStudent1() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        Student student = new Student("Alice", Student.Gender.FEMALE, null, department);
+        boolean expected = true;
+        boolean actual = course.registerStudent(student);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("register again -> false")
+    void testRegisterStudent2() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        Student student = new Student("Alice", Student.Gender.FEMALE, null, department);
+        course.registerStudent(student);
+        boolean expected = false;
+        boolean actual = course.registerStudent(student);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("null -> false")
+    void testRegisterStudent3() {
+        Department department = new Department("Computer Science");
+        Course course = new Course("Programming", 3.0, department);
+        Student student = null;
+        boolean expected = false;
+        boolean actual = course.registerStudent(student);
+        Assertions.assertEquals(expected, actual);
+    }
 }
