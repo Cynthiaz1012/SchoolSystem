@@ -23,4 +23,15 @@ The system allows:
 - Assignment
 - Util
 
+## Unit Testing
+Unit tests are realized using JUnit Jupiter, methods testing:
+- static boolean isPostalCodeValid(String postalCode)
+- static boolean isDepartmentNameValid(String departmentName)
+- boolean registerCourse(Course course)
+- boolean dropCourse(Course course)
+- double calcAssignmentAvg()
+- boolean isAssignmentWeightValid()
+- boolean registerStudent(Student student)
+- int[] calcStudentsAverage()
+- boolean addAssignment(String assignmentName, double weight)
 
