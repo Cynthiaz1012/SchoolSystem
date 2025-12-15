@@ -3,6 +3,7 @@ package org.cynthia;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -19,6 +20,7 @@ public class Assignment {
         this.assignmentId = String.format("A%03d", nextId++);;
         this.assignmentName = assignmentName;
         this.weight = weight;
+        this.scores = new ArrayList<>();
     }
 
     /**
