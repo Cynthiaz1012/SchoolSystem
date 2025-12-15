@@ -19,14 +19,6 @@ public class Student {
     private List<Course> registeredCourses;
     private static int nextId = 1;
 
-    /**
-     * generate the id for the next department
-     * @return the id for the next department
-     */
-    private static String generateId(){
-        return String.format("S%06d", nextId++);
-    }
-
     public Student(String studentName, Gender gender, Address address, Department department) {
         this.studentId = String.format("S%06d", nextId++);
         this.studentName = studentName;
